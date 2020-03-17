@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Clean Blog - Start Bootstrap Theme</title>
+  <title>@yield('sub_title','Clean Blog - Start Bootstrap Theme')</title>
 
 
 
@@ -57,8 +57,8 @@
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="site-heading">
-            <h1>Clean Blog</h1>
-            <span class="subheading">A Blog Theme by Start Bootstrap</span>
+            <h2>@yield('title', 'Clean Blog')</h2>
+            <span class="subheading">@yield('sub_title','A Blog Theme by Start Bootstrap')</span>
           </div>
         </div>
       </div>

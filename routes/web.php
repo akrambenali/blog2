@@ -19,3 +19,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/','PageController@index')->name('pages.index');
 Route::get('/about', 'PageController@about')->name('pages.about');
+Route::get('{slug}', 'PageController@showArticle')->name('pages.show-article');
