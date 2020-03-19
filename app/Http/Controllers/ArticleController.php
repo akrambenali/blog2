@@ -15,6 +15,14 @@ class ArticleController extends Controller
     public function index()
     {
         //
+        $q = request('q');
+        $articles = Article::Recherche($q)
+            ->latest('id')
+            ->with('user')
+            ->paginate(20);
+       // $articles->load('user');
+        return view('articles.index', compact('articles'));
+        return View('articles.index')->withArticles($articles);
     }
 
     /**
@@ -25,6 +33,7 @@ class ArticleController extends Controller
     public function create()
     {
         //
+        return view('articles.create');
     }
 
     /**
@@ -35,7 +44,16 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       request()->validate([
+           'title'=> 'required|min:6|max:255',
+           'sub_title' => 'required',
+           'published_at' => 'required|date',
+           'body' => 'required',
+           'user_id' => 'required|integer',
+       ]);
+
+       $article = Article::create(request()->all()+ ['slug'=> \Str::slug(request('title'))]);
+       return redirect()->route('pages.index');
     }
 
     /**
@@ -47,6 +65,10 @@ class ArticleController extends Controller
     public function show(Article $article)
     {
         //
+        // return $slug;
+       // $article = Article::where('slug', $slug)->first();
+        //dd($article);
+        return view('articles.show', compact('article'));
     }
 
     /**

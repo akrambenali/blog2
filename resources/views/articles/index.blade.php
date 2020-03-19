@@ -12,9 +12,9 @@
           </form>
           @foreach ($articles as $article )
                <div class="post-preview">
-          <a href="{{ route('pages.show-article', $article->slug)}}">
+          <a href="{{ route('articles.show', $article->slug)}}">
             <h2 class="post-title">
-             {{$loop->iteration}} -
+             {{$article->id}} -
              {!! $article->title_searched !!}
             </h2>
             <h3 class="post-subtitle">

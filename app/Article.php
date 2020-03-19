@@ -11,6 +11,15 @@ class Article extends Model
     protected $casts = [
         'published_at' => 'datetime',
     ];
+    //  champs autoriser CRUD
+    protected $fillable = ['title','sub_title','slug','body', 'published_at', 'user_id'];
+
+
+    //protected $with = ['user'];
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
     public  function  user() {
         return $this->belongsTo(User::class);
     }
@@ -38,4 +47,10 @@ class Article extends Model
 
         return str_replace(request('q'), '<mark>' . request('q') . '</mark>', $this->title);
     }
+
+  /*   public function setSlugAttribute()
+    {
+
+        $this->attributes['slug']= Str::slug($this->title);
+    } */
 }
