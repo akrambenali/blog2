@@ -16,9 +16,6 @@
           @endif
         <form method="POST" action="{{route('articles.store')}}">
             @csrf
-
-            <input  type="hidden" name="user_id" value="1">
-
           <div class="control-group">
             <div class="form-group ">
               <label>titre</label>

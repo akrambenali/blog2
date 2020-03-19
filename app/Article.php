@@ -12,7 +12,7 @@ class Article extends Model
         'published_at' => 'datetime',
     ];
     //  champs autoriser CRUD
-    protected $fillable = ['title','sub_title','slug','body', 'published_at', 'user_id'];
+    protected $fillable = ['title','sub_title','slug','body', 'published_at', ];
 
 
     //protected $with = ['user'];

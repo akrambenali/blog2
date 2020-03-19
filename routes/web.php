@@ -20,3 +20,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'ArticleController@index')->name('pages.index');
 Route::get('/about', 'PageController@about')->name('pages.about');
 Route::resource('articles', 'ArticleController');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+

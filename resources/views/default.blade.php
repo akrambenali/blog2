@@ -16,7 +16,7 @@
   <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 
   <!-- Custom styles for this template -->
-  <link href="{{mix('/css/site.css')}}" rel="stylesheet">
+  <link href="{{mix('/css/app.css')}}" rel="stylesheet">
 
 
 </head>

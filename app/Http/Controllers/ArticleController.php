@@ -7,6 +7,13 @@ use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
+
+
+
+    public function __construct()
+    {
+        $this->middleware('auth')->only('create','store');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -44,16 +51,17 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
+        //dd(auth()->id());
        request()->validate([
            'title'=> 'required|min:6|max:255',
            'sub_title' => 'required',
            'published_at' => 'required|date',
            'body' => 'required',
-           'user_id' => 'required|integer',
+           //'user_id' => 'required|integer',
        ]);
 
-       $article = Article::create(request()->all()+ ['slug'=> \Str::slug(request('title'))]);
-       return redirect()->route('pages.index');
+       $article =  auth()->user()->articles()->create(request()->all()+ ['slug'=> \Str::slug(request('title'))]);
+       return redirect()->route('articles.show',$article);
     }
 
     /**
