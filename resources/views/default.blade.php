@@ -45,6 +45,19 @@
           <li class="nav-item {{ Route::currentRouteName() == 'pages.contact' ? 'active' : ''}}">
             <a class="nav-link" href="contact.html">Contact</a>
           </li>
+
+          @auth
+
+
+          <li class="nav-item {{ Route::currentRouteName() == 'logout' ? 'active' : ''}}">
+            <a class="nav-link" href="{{route('logout')}}">logout</a>
+          </li>
+          @else
+           <li class="nav-item {{ Route::currentRouteName() == 'login' ? 'active' : ''}}">
+            <a class="nav-link" href="{{route('login')}}">login</a>
+          </li>
+          @endif
+
         </ul>
       </div>
     </div>
