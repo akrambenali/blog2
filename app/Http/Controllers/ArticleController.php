@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Article;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
+
 
 class ArticleController extends Controller
 {
@@ -21,7 +23,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        //
+        // alert('Title', 'Lorem Lorem Lorem', 'success');
         $q = request('q');
         $articles = Article::Recherche($q)
             ->latest('id')

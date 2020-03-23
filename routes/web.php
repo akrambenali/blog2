@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('logout','\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
 Route::get('/', 'ArticleController@index')->name('pages.index');
 Route::get('/about', 'PageController@about')->name('pages.about');
+Route::post('newsletter', 'NewsletterController@store')->name('newsletter.store');
 Route::resource('articles', 'ArticleController');
 
 Auth::routes();

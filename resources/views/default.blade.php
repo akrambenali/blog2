@@ -22,7 +22,7 @@
 </head>
 
 <body>
-
+   @include('sweetalert::alert')
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
@@ -86,6 +86,11 @@
   <!-- Footer -->
   <footer>
     <div class="container">
+      <form class="form-inline justify-content-center mb-4" method="POST" action="{{route('newsletter.store')}}">
+           @csrf
+           <input class="form-control" type="email" name="mail" placeholder="Votre Email">
+           <button class="btn btn-info">S'inscrire</button>
+      </form>
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <ul class="list-inline text-center">
