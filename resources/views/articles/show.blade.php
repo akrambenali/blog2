@@ -1,11 +1,17 @@
 @extends('default')
 
+@section('bg-image')
+   /storage/{{$article->image}}
+@endsection
 @section('title')
     {{$article->title}}
 @endsection
 @section('sub_title')
     {{$article->sub_title}}
 @endsection
+
+
+
 @section('content')
 <!-- Post Content -->
   <article>

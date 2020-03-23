@@ -57,7 +57,7 @@ class ArticleController extends Controller
            'sub_title' => 'required',
            'published_at' => 'required|date',
            'body' => 'required',
-           //'user_id' => 'required|integer',
+           'image' => 'image',
        ]);
 
        $article =  auth()->user()->articles()->create(request()->all()+ ['slug'=> \Str::slug(request('title'))]);
