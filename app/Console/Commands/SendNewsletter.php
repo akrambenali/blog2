@@ -2,6 +2,8 @@
 
 namespace App\Console\Commands;
 
+use Illuminate\Support\Facades\Mail;
+use App\Mail\Newsletter as MailNewsletter;
 use App\Newsletter;
 use Illuminate\Console\Command;
 
@@ -44,6 +46,7 @@ class SendNewsletter extends Command
 
         foreach ($users as $email) {
             # code...
+             Mail::to('akram1304@gmail.com')->send(new MailNewsletter($email));
         }
         $this->info('job finished');
     }
