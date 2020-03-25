@@ -12,16 +12,18 @@ class Newsletter extends Mailable
     use Queueable, SerializesModels;
 
     public $email;
+    public $articles ;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($email)
+    public function __construct($email, $articles)
     {
         //
 
         $this->email = $email;
+        $this->articles = $articles;
     }
 
     /**

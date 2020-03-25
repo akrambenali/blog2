@@ -1,12 +1,19 @@
 @component('mail::message')
-# Introduction
+# Newsletter de la semaine
 
 The body of your message.
 
-@component('mail::button', ['url' => ''])
-Button Text
-@endcomponent
+## Liste des articles
+<ul class="justify-content-center">
+    @foreach ($articles as $article)
+     <li class="nav-item">
+        <a class="nav-link" href="{{ route('articles.show', $article)}}">{{$article->title}}</a>
+     </li>
+    @endforeach
 
-Thanks,<br>
+</ul>
+
+
+Merci,<br>
 {{ config('app.name') }}
 @endcomponent

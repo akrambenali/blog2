@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Article;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\Newsletter as MailNewsletter;
 use App\Newsletter;
@@ -42,11 +43,13 @@ class SendNewsletter extends Command
     public function handle()
     {
         //
-        $users = Newsletter::pluck('mail');
 
+        $users = Newsletter::pluck('mail');
+        $articles = Article::whereDate('published_at','>=', now()->startOfWeek())->get();
+        //dd($articles);
         foreach ($users as $email) {
             # code...
-             Mail::to('akram1304@gmail.com')->send(new MailNewsletter($email));
+             Mail::to($users)->queue(new MailNewsletter($email, $articles));
         }
         $this->info('job finished');
     }
