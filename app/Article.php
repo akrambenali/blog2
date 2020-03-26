@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Intervention\Image\ImageManagerStatic as Image;
 use Storage;
+use Cache;
 
 class Article extends Model
 {
@@ -65,5 +66,19 @@ class Article extends Model
         Storage::put($image_name, (string) $img->encode());
 
         $this->attributes['image'] = $image_name ;
+    }
+
+    public function scopeHome($q) {
+
+        $words = request('q');
+        $page  = request('page',1);
+
+        return  Cache::tags(['articles','homepage'])->remember("article-home-$page-$words", 60*20 , function () use($q,$words) {
+            return $q->Recherche($words)
+                ->latest('id')
+                ->with('user')
+                ->paginate(20);
+        });
+
     }
 }

@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Article;
+use App\Observers\ArticleObserver;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 
@@ -26,6 +28,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+        Article::observe(ArticleObserver::class);
     }
 }
 

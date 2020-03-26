@@ -24,11 +24,9 @@ class ArticleController extends Controller
     public function index()
     {
         // alert('Title', 'Lorem Lorem Lorem', 'success');
-        $q = request('q');
-        $articles = Article::Recherche($q)
-            ->latest('id')
-            ->with('user')
-            ->paginate(20);
+
+        $articles = Article::home();
+
        // $articles->load('user');
         return view('articles.index', compact('articles'));
         return View('articles.index')->withArticles($articles);
