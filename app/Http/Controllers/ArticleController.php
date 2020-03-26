@@ -14,7 +14,7 @@ class ArticleController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth')->only('create','store');
+        $this->middleware(['auth', 'checkRole'])->only('create','store');
     }
     /**
      * Display a listing of the resource.
