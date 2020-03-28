@@ -19,6 +19,7 @@ class BlogTest extends TestCase
     {
         $response = $this->get('/');
 
-        $response->assertOk(200);
+        $response->assertOk();
+        $response->assertSee('Clean Blog');
     }
 }
